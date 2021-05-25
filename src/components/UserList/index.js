@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const UserList = () => {
   const [userList, setUserList] = useState([]);
   const classes = useStyles();
+  const history = useHistory();
 
   const getUserList = async () => {
     try {
@@ -51,6 +53,10 @@ const UserList = () => {
     }
   }
 
+  const handleClick = id => {
+    history.push(`/${id}`)
+  }
+ 
   useEffect(() => {
     getUserList();
   }, [])
@@ -75,6 +81,7 @@ const UserList = () => {
                     hover
                     tabIndex={-1}
                     key={user.id}
+                    onClick={() => handleClick(user.id)}
                   >
                     <TableCell component="th" id={`name-${user.id}`} scope="row" padding="none">
                       {user.name}
