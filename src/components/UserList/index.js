@@ -4,7 +4,6 @@ import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-// import TableFooter from '@material-ui/core/TableFooter';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
@@ -41,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
+  const [editFields, setEditFields] = useState([]);
   const classes = useStyles();
   const history = useHistory();
 
@@ -55,6 +55,21 @@ const UserList = () => {
 
   const handleClick = id => {
     history.push(`/${id}`)
+  }
+
+  const addEditFields = id => {
+    const fields = [...editFields]
+    console.log('fields', fields)
+    if(fields.some(e => e === id)) {
+      const index = fields.indexOf(id);
+      fields.splice(index, 1);
+      console.log(fields);
+      setEditFields(fields);
+    } else {
+      fields.push(id);
+      console.log(fields);
+      setEditFields(fields);
+    }
   }
  
   useEffect(() => {
@@ -75,22 +90,50 @@ const UserList = () => {
             <TableBody>
               {userList.length > 0 && userList.map(user => {
                 const date = moment(user.birthdate).format('DD-MM-YYYY');
-                console.log(date);
                 return (
                   <TableRow
                     hover
                     tabIndex={-1}
                     key={user.id}
-                    onClick={() => handleClick(user.id)}
                   >
-                    <TableCell component="th" id={`name-${user.id}`} scope="row" padding="none">
-                      {user.name}
+                    <TableCell component="th" scope="row" id={`see-${user.id}`}>
+                      <button onClick={() => handleClick(user.id)}>See User</button>
                     </TableCell>
-                    <TableCell component="th" id={`age-${user.id}`} scope="row" padding="none">
-                      {user.age}
+                    <TableCell component="th" id={`name-${user.id}`} scope="row">
+                      <>
+                        {editFields.some(e => e === user.id) ? (
+                        <input />
+                        ): (
+                          <>
+                            {user.name}
+                          </>
+                        )}
+                      </>
                     </TableCell>
-                    <TableCell component="th" id={`birthdate-${user.id}`} scope="row" padding="none">
-                      {date}
+                    <TableCell component="th" id={`age-${user.id}`} scope="row">
+                      <>
+                        {editFields.some(e => e === user.id) ? (
+                        <input />
+                        ): (
+                          <>
+                            {user.age}
+                          </>
+                        )}
+                      </>
+                    </TableCell>
+                    <TableCell component="th" id={`birthdate-${user.id}`} scope="row">
+                      <>
+                        {editFields.some(e => e === user.id) ? (
+                        <input />
+                        ): (
+                          <>
+                            {user.age}
+                          </>
+                        )}
+                      </>
+                    </TableCell>
+                    <TableCell component="th" scope="row" id={`edit-${user.id}`}>
+                      <button onClick={() => addEditFields(user.id)}>Edit fields</button>
                     </TableCell>
                   </TableRow>
                 )

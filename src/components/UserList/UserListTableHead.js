@@ -3,9 +3,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 const headCells = [
+  { id: 'see', label: '', align: 'center' },
   { id: 'name', label: 'Name', align: 'left' },
   { id: 'age', label: 'Age', align: 'left' },
-  { id:'birthdate', label: 'Birthdate', align: 'left' }
+  { id:'birthdate', label: 'Birthdate', align: 'left' },
+  { id: 'edit', label: '', align: 'center' }
 ];
 
 const UserListTableHead = () => {
