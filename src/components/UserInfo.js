@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -27,7 +27,10 @@ const useStyles = makeStyles((theme) => ({
 const UserInfo = () => {
   const [userInfo, setUserInfo] = useState({});
   const classes = useStyles();
+  const history = useHistory();
   const { id } = useParams();
+
+  const handleClick = () => history.goBack()
   
   const getUserInfo = async () => {
     try {
@@ -51,6 +54,7 @@ const UserInfo = () => {
         <p>{ userInfo.name }</p>
         <p>{ userInfo.age }</p>
         <p>{ userInfo.birthdate }</p>
+        <button onClick={() => handleClick()}>Go back to Users List</button>
       </Paper>
     </div>
   );
