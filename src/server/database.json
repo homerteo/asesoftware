@@ -2,61 +2,61 @@
   "users": [
     {
       "id": 1,
-      "name:": "Julian Pérez",
+      "name": "Julian Pérez",
       "age": 40,
       "birthdate": "1980-12-13T05:00:00.000Z"
     },
     {
       "id": 2,
-      "name:": "Mateo ramírez",
+      "name": "Mateo ramírez",
       "age": 33,
       "birthdate": "1988-04-03T05:00:00.000Z"
     },
     {
       "id": 3,
-      "name:": "Andrea Otálvaro",
+      "name": "Andrea Otálvaro",
       "age": 19,
       "birthdate": "2001-11-11T05:00:00.000Z"
     },
     {
       "id": 4,
-      "name:": "John Sanchez",
+      "name": "John Sanchez",
       "age": 13,
       "birthdate": "2007-10-10T05:00:00.000Z"
     },
     {
       "id": 5,
-      "name:": "María Buitrago",
+      "name": "María Buitrago",
       "age": 50,
       "birthdate": "1970-09-08T05:00:00.000Z"
     },
     {
       "id": 6,
-      "name:": "Johana Gómez",
+      "name": "Johana Gómez",
       "age": 29,
       "birthdate": "1991-08-07T05:00:00.000Z"
     },
     {
       "id": 7,
-      "name:": "Miryam Martínez",
+      "name": "Miryam Martínez",
       "age": 56,
       "birthdate": "1964-07-06T05:00:00.000Z"
     },
     {
       "id": 8,
-      "name:": "Natalia Arroyabe",
+      "name": "Natalia Arroyabe",
       "age": 25,
       "birthdate": "1985-06-05T05:00:00.000Z"
     },
     {
       "id": 9,
-      "name:": "Pancracio Zuluaga",
+      "name": "Pancracio Zuluaga",
       "age": 21,
       "birthdate": "1999-05-04T05:00:00.000Z"
     },
     {
       "id": 10,
-      "name:": "Daniel Valdéz",
+      "name": "Daniel Valdéz",
       "age": 17,
       "birthdate": "2004-04-03T05:00:00.000Z"
     }
