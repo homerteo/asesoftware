@@ -8,6 +8,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 import UserListTableHead from './UserListTableHead';
 import userService from '../../api/users';
 
@@ -102,7 +105,7 @@ const UserList = () => {
                     <TableCell component="th" id={`name-${user.id}`} scope="row">
                       <>
                         {editFields.some(e => e === user.id) ? (
-                        <input />
+                        <TextField defaultValue={user.name} />
                         ): (
                           <>
                             {user.name}
@@ -113,7 +116,7 @@ const UserList = () => {
                     <TableCell component="th" id={`age-${user.id}`} scope="row">
                       <>
                         {editFields.some(e => e === user.id) ? (
-                        <input />
+                        <TextField type="number" defaultValue={user.age} />
                         ): (
                           <>
                             {user.age}
@@ -124,10 +127,22 @@ const UserList = () => {
                     <TableCell component="th" id={`birthdate-${user.id}`} scope="row">
                       <>
                         {editFields.some(e => e === user.id) ? (
-                        <input />
+                        <MuiPickersUtilsProvider utils={MomentUtils}>
+                          <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            margin="normal"
+                            id="date-picker-inline"
+                            label="Date picker inline"
+                            KeyboardButtonProps={{
+                              'aria-label': 'change date',
+                            }}
+                          />
+                        </MuiPickersUtilsProvider>
                         ): (
                           <>
-                            {user.age}
+                            {date}
                           </>
                         )}
                       </>
