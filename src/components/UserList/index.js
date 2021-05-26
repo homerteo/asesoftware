@@ -9,7 +9,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import EditIcon from '@material-ui/icons/Edit';
 import MomentUtils from '@date-io/moment';
 import UserListTableHead from './UserListTableHead';
 import userService from '../../api/users';
@@ -62,15 +65,12 @@ const UserList = () => {
 
   const addEditFields = id => {
     const fields = [...editFields]
-    console.log('fields', fields)
     if(fields.some(e => e === id)) {
       const index = fields.indexOf(id);
       fields.splice(index, 1);
-      console.log(fields);
       setEditFields(fields);
     } else {
       fields.push(id);
-      console.log(fields);
       setEditFields(fields);
     }
   }
@@ -82,6 +82,7 @@ const UserList = () => {
   return(
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
+      <h1>Users List</h1>
         <TableContainer className={classes.container}>
         <Table
             className={classes.table}
@@ -100,7 +101,7 @@ const UserList = () => {
                     key={user.id}
                   >
                     <TableCell component="th" scope="row" id={`see-${user.id}`}>
-                      <button onClick={() => handleClick(user.id)}>See User</button>
+                      <IconButton onClick={() => handleClick(user.id)}><VisibilityIcon /></IconButton>
                     </TableCell>
                     <TableCell component="th" id={`name-${user.id}`} scope="row">
                       <>
@@ -148,7 +149,7 @@ const UserList = () => {
                       </>
                     </TableCell>
                     <TableCell component="th" scope="row" id={`edit-${user.id}`}>
-                      <button onClick={() => addEditFields(user.id)}>Edit fields</button>
+                      <IconButton onClick={() => addEditFields(user.id)}><EditIcon /></IconButton>
                     </TableCell>
                   </TableRow>
                 )

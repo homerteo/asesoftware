@@ -3,6 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import userService from '../api/users';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +24,19 @@ const useStyles = makeStyles((theme) => ({
   container: {
     height: 'auto',
   },
+  list: {
+    listStyle: 'none',
+    textAlign: 'left',
+    marginTop: '20vh',
+  },
+  listItem: {
+    marginTop: '20px',
+  },
+  button: {
+    height: '118px',
+    width: '118px',
+    marginTop: '20vh',
+  }
 }));
 
 const UserInfo = () => {
@@ -51,10 +66,12 @@ const UserInfo = () => {
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={3}>
         <h1>User Information</h1>
-        <p>{ userInfo.name }</p>
-        <p>{ userInfo.age }</p>
-        <p>{ userInfo.birthdate }</p>
-        <button onClick={() => handleClick()}>Go back to Users List</button>
+        <ul className={classes.list}>
+          <li className={classes.listItem}><strong>Name: </strong>{ userInfo.name }</li>
+          <li className={classes.listItem}><strong>Age: </strong>{ userInfo.age }</li>
+          <li className={classes.listItem}><strong>Birthday: </strong>{ userInfo.birthdate }</li>
+        </ul>
+        <IconButton onClick={() => handleClick()} className={classes.button}><ArrowBackIosIcon /><strong>Go Back</strong></IconButton>
       </Paper>
     </div>
   );
