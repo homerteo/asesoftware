@@ -18,6 +18,10 @@ En la carpeta components se hace la implementación de las vistas y la vista pri
 
 ## Ejecución de la App
 
-Para correr la app se debe ejecutar el comando
+Previamente a la ejecución de la App se deben instalar sus dependencias con el comando:
+`npm install`.
+
+Para correr la app se debe ejecutar el comando:
 `npm run dev`
+
 Este comando ejecutará el front por defecto en el puerto 3000 y el servidor de json-server en el puerto 8001.
